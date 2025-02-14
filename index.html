@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Login by Shobhit</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3, #ff4d79);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Heart-shaped form container */
+        #login-form {
+            background: linear-gradient(145deg, #ff4d79, #ff2357);
+            padding: 40px 60px;
+            border-radius: 50% 50% 10% 10%; /* Heart-shaped box */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            width: 400px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        #login-form.active {
+            opacity: 1;
+        }
+
+        /* Heading above the form */
+        h2 {
+            color: white;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        label {
+            font-size: 24px;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            font-size: 18px;
+            text-align: center;
+            background: linear-gradient(145deg, #ffb3cc, #ff4d79); 
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
+            border-radius: 50px 50px 0 0; /* Heart-shaped input box */
+            position: relative;
+        }
+
+        input:focus {
+            background: linear-gradient(145deg, #ff4d79, #ffb3cc);
+            outline: none;
+            box-shadow: 0 0 8px rgba(255, 77, 121, 0.7);
+        }
+
+        /* Adding heart shape to input box with pseudo-elements */
+        input::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            background: #ff4d79;
+            border-radius: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        input::after {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            background: #ff4d79;
+            border-radius: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        button {
+            background: linear-gradient(145deg, #ff4d79, #ff2357);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 22px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: linear-gradient(145deg, #ff2357, #ff4d79);
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <form id="login-form">
+        <h2>Enter Your Name</h2>
+        <label for="code">My Love:</label>
+        <input type="text" id="code" name="code" placeholder="Your Name">
+        <button id="submit-btn">Login</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        const form = document.getElementById('login-form');
+        const codeInput = document.getElementById('code');
+        const submitBtn = document.getElementById('submit-btn');
+        const resultDiv = document.getElementById('result');
+
+        const secretCode = 'Shobhit'; // Replace with your secret code
+        const nextPageUrl = 'main.html'; // Replace with the URL of the new page
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const userInput = codeInput.value.trim();
+            if (userInput === secretCode) {
+                resultDiv.innerHTML = 'Baby';
+                window.location.href = nextPageUrl; // Redirect to new page
+            } else {
+                resultDiv.innerHTML = 'Naa Tum meri baby nhi hoo kon hooo tum kaha hai meri Shobhit';
+            }
+        });
+
+        // Add active class to form for fadeIn effect
+        window.onload = () => {
+            setTimeout(() => {
+                form.classList.add('active');
+            }, 200);
+        };
+
+    </script>
+</body>
+</html>
